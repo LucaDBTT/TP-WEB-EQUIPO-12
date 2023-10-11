@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.33801.447
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carrito", "Carrito\Carrito.csproj", "{42082248-7B6F-4772-A874-2B57EAA759F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "..\..\Dominio\Dominio.csproj", "{F55D2398-5F1B-481F-A964-90950DEA8B14}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{F55D2398-5F1B-481F-A964-90950DEA8B14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "..\..\Negocio\Negocio.csproj", "{FC5B38DD-38DC-4432-B9F1-E0634AA9986B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "Negocio\Negocio.csproj", "{FC5B38DD-38DC-4432-B9F1-E0634AA9986B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

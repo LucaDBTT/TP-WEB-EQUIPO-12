@@ -250,6 +250,57 @@ namespace Negocio
                 datos.CerrarConexion();
             }
         }
+        public List<Articulo> ListarConSP()
+        {
+            List<Articulo> articulos = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.SetearProcedimiento("ListadoArticulos");
+                datos.EjecutarLectura();
+
+                while (datos.lector.Read())
+                {
+                    Articulo aux = new Articulo();
+
+                    aux.IdArticulo = (int)datos.lector["Id"];
+                    aux.CodigoArticulo = (string)datos.lector["Codigo"];
+                    aux.Nombre = (string)datos.lector["Nombre"];
+                    aux.Descripcion = (string)datos.lector["Descripcion"];
+                    aux.Precio = (decimal)datos.lector["Precio"];
+                    aux.Marca = new Marca();
+                    aux.Marca.Descripcion = (string)datos.lector["MarcaDescripcion"];
+                    aux.Marca.IdMarca = (int)datos.lector["IdMarca"];
+                    aux.Categoria = new Categoria();
+                    aux.ImagenUrl = new Imagen();
+
+                    if (datos.lector["CategoriaDescripcion"] is DBNull)
+                    {
+                        aux.Categoria = null;
+                    }
+                    else
+                    {
+                        aux.Categoria = new Categoria();
+                        aux.Categoria.Descripcion = (string)datos.lector["CategoriaDescripcion"];
+                        aux.Categoria.IdCategoria = (int)datos.lector["IdCategoria"];
+                    }
+
+                    if (!(datos.lector["ImagenUrl"] is DBNull))
+                        aux.ImagenUrl.Descripcion = (string)datos.lector["ImagenUrl"];
+
+                    articulos.Add(aux);
+                }
+                return articulos;
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
     }
 }
 

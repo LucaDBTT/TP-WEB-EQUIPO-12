@@ -20,20 +20,12 @@ namespace Carrito
             {
                 repRepeater.DataSource = ListaArticulo;
                 repRepeater.DataBind();
-            } 
-        }
+            }
 
-        protected void btnDetalle_Click(object sender, EventArgs e)
-        {
-            Button btnDetalle = (Button)sender;
-            string idArticulo = btnDetalle.CommandArgument;
-
-            if (!string.IsNullOrEmpty(idArticulo))
+            if (Request.QueryString["IdArticulo"] != null)
             {
-                Session["IdArticulo"] = idArticulo;
-                Response.Redirect("Detalle.aspx", false);
+                string idArticulo = Request.QueryString["IdArticulo"];
             }
         }
-
     }
 }

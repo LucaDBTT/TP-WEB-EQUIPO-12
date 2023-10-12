@@ -12,11 +12,10 @@
                     <div class="card-body">
                         <h5 class="card-title"><%#Eval("Nombre") %></h5>
                         <p class="card-text"><%#Eval("Descripcion") %></p>
-                        <asp:HyperLink ID="lnkDetalle" runat="server" DataKeyNames="IdArticulo" NavigateUrl="Detalle.aspx" Text="Ver Detalle" CssClass="btn btn-primary" />
+                        <a href='<%# "Detalle.aspx?IdArticulo=" + Eval("IdArticulo") %>' class="btn btn-primary">Ver Detalle</a>
                     </div>
                 </div>
             </ItemTemplate>
         </asp:Repeater>
-
     </div>
 </asp:Content>

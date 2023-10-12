@@ -13,14 +13,17 @@ namespace Carrito
         {
             if (!IsPostBack)
             {
-                if (Session["IdArticulo"] != null)
+                // Verifica si el parámetro "IdArticulo" está presente en la URL.
+                if (Request.QueryString["IdArticulo"] != null)
                 {
-                    string idArticulo = Session["IdArticulo"].ToString();
-                    LBL.Text = idArticulo;
+                    string idArticulo = Request.QueryString["IdArticulo"];
+                    // Ahora puedes usar el valor de idArticulo como desees en esta página.
+                    LBL.Text = "ID del Artículo: " + idArticulo; // Por ejemplo, puedes mostrarlo en una etiqueta Label.
                 }
                 else
                 {
-                    // Maneja el caso en el que la variable de sesión no existe o no tiene un valor
+                    // Maneja el caso en el que el parámetro "IdArticulo" no está presente en la URL.
+                    LBL.Text = "ID del Artículo no especificado"; // Puedes mostrar un mensaje de error.
                 }
             }
         }

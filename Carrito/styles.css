@@ -1,0 +1,10 @@
+﻿.card {
+    margin-top: 50px; /* Ajusta el valor según la cantidad de espacio que desees */
+    margin-left: 100px;
+    margin-bottom: 20px;
+}
+
+.card img {
+        width: 260px;
+        height: 200px;
+  }

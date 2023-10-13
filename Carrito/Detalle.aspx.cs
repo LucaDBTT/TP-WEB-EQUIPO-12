@@ -15,6 +15,7 @@ namespace Carrito
         public string nombre { get; set; }
         public string imgUrl { get; set; }
         public string descripcion { get; set; }
+        public List<Imagen> imagenesArticulo { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -42,8 +43,14 @@ namespace Carrito
 
                    
                     nombre = seleccionado.Nombre;
-                    imgUrl = seleccionado.ImagenUrl.Descripcion;
+                    //imgUrl = seleccionado.ImagenUrl.Descripcion;
                     descripcion = seleccionado.Descripcion;
+                    ///aca tengo mis imagenes (se supone) 
+                    imagenesArticulo = seleccionado.imagenesUrl;
+
+                    repeaterImages.DataSource = articulos.SelectMany(articulo => seleccionado.imagenesUrl);
+                    repeaterImages.DataBind();
+
                 }
                 else
                 {

@@ -18,6 +18,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
+
                 datos.SetearQuery("select a.Id, a.Codigo, a.Nombre, a.Descripcion, a.Precio, m.Descripcion as MarcaDescripcion, a.IdMarca, c.Descripcion as CategoriaDescripcion, a.IdCategoria, im.ImagenUrl from ARTICULOS a INNER join IMAGENES im ON a.Id= im.IdArticulo INNER JOIN MARCAS m ON a.IdMarca = m.Id LEFT JOIN CATEGORIAS c ON a.IdCategoria = c.Id");
                 datos.EjecutarLectura();
                 while (datos.lector.Read())
@@ -253,11 +254,22 @@ namespace Negocio
         public List<Articulo> ListarConSP()
         {
             List<Articulo> articulos = new List<Articulo>();
+            
+            //Imagen obj = new Imagen();
             AccesoDatos datos = new AccesoDatos();
+            AccesoDatos datos1 = new AccesoDatos();
+
+
             try
             {
+               
+                
+
                 datos.SetearProcedimiento("ListadoArticulos");
                 datos.EjecutarLectura();
+                datos1.SetearProcedimiento("storedListarImagenes");
+                datos1.EjecutarLectura();
+
 
                 while (datos.lector.Read())
                 {
@@ -272,7 +284,21 @@ namespace Negocio
                     aux.Marca.Descripcion = (string)datos.lector["MarcaDescripcion"];
                     aux.Marca.IdMarca = (int)datos.lector["IdMarca"];
                     aux.Categoria = new Categoria();
-                    aux.ImagenUrl = new Imagen();
+                    //aux.ImagenUrl = new Imagen();
+                    //aux.imagenesUrl = imagenes;
+                    List<Imagen> imagenes = new List<Imagen>();
+                    while (datos1.lector.Read())
+                    {
+                                 Imagen obj = new Imagen();
+                        if (datos1.lector["IdArticulo"].ToString() == aux.IdArticulo.ToString())
+
+                            obj.IdArticulo = (int)datos1.lector["IdArticulo"];
+
+                        obj.Descripcion = (string)datos1.lector["ImagenUrl"];
+
+                        imagenes.Add(obj);
+                    }
+                    aux.imagenesUrl = imagenes;
 
                     if (datos.lector["CategoriaDescripcion"] is DBNull)
                     {
@@ -285,8 +311,13 @@ namespace Negocio
                         aux.Categoria.IdCategoria = (int)datos.lector["IdCategoria"];
                     }
 
-                    if (!(datos.lector["ImagenUrl"] is DBNull))
-                        aux.ImagenUrl.Descripcion = (string)datos.lector["ImagenUrl"];
+                    //if (!(datos.lector["ImagenUrl"] is DBNull))
+                    // aux.ImagenUrl.Descripcion = (string)datos.lector["ImagenUrl"];
+                    ///aca esta para guardar mas imagenes 
+                    ///ejecuta la lectura trayendo todas las imagenes de la tabla pero con el if solo guardo las que son
+                    ///del articulo que corresponde. (hay que ver si anda )
+                    
+                   
 
                     articulos.Add(aux);
                 }

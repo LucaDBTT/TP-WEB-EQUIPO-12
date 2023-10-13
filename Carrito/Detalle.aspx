@@ -11,10 +11,18 @@
         <div class="container text-center">
   <div class="row">
     <div class="col">
+         <asp:Repeater ID="repeaterImages" runat="server" DataSource="<%# imagenesArticulo %>">
+    <ItemTemplate>
+        <div class="carousel-item<%# Container.ItemIndex == 0 ? " active" : "" %>">
+            <img src='<%# Eval("Descripcion") %>' class="d-block w-100" alt="...">
+        </div>
+    </ItemTemplate>
+</asp:Repeater>
+
         <div id="carouselExample" class="carousel slide">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="<%= imgUrl %>" class="d-block w-100" alt="...">
+    
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">

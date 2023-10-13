@@ -20,7 +20,8 @@ namespace Dominio
         public Marca Marca { get; set; }
         [DisplayName("Categoría del articulo")]
         public Categoria Categoria { get; set; }
-        public Imagen ImagenUrl { get; set; }
         public Decimal Precio { get; set; }
+        public List<Imagen> imagenesUrl { get; set; }
+        public Imagen ImagenUrl { get; set; }
     }
 }

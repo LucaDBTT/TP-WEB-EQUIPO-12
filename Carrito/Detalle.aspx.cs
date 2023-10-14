@@ -16,6 +16,7 @@ namespace Carrito
         public string imgUrl { get; set; }
         public string descripcion { get; set; }
         public List<Imagen> imagenesArticulo { get; set; }
+       
         protected void Page_Load(object sender, EventArgs e)
         {
             

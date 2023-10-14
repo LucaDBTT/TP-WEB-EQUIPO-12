@@ -40,8 +40,7 @@
   <div class="card-body">
     <h5 class="card-title"><%:nombre %></h5>
     <p class="card-text"><%:descripcion %></p>
-   <a href="Compra.aspx" class="btn btn-primary">Añadir al carrito</a>
-
+    <a href="Compra.aspx" class="btn btn-primary">Añadir al Carrito</a>
   </div>
 </div>
     </div>

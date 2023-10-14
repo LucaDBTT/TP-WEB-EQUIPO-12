@@ -17,6 +17,8 @@ namespace Carrito
         public string nombre { get; set; }
         public string imgUrl { get; set; }
         public string descripcion { get; set; }
+        public Decimal precio { get; set; }
+        public string marca { get; set; }
         public List<string> imagenesArticulo { get; set; }
         
 
@@ -52,12 +54,11 @@ namespace Carrito
                     }
                     
 
-
-
-
                     nombre = seleccionado.Nombre;
                     //imgUrl = seleccionado.ImagenUrl.Descripcion;
                     descripcion = seleccionado.Descripcion;
+                    precio = seleccionado.Precio;
+                    marca = seleccionado.Marca.Descripcion;
                     ///aca tengo mis imagenes (se supone) 
                     //imagenesArticulo = seleccionado.imagenesUrl;
 

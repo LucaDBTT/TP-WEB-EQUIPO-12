@@ -43,3 +43,21 @@
 .cart-item {
     margin-left: auto;
 }
+
+#Imagenes {
+    max-width: 1000px !important;
+    height: auto !important;
+    
+}
+
+
+section {
+    background-color: #ffffff; /* Color de fondo */
+    padding: 20px; /* Espaciado interior */
+    margin-top: 20px; /* Espaciado superior */
+    border: 1px solid #ddd; /* Borde */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 0 40px rgba(255, 255, 0, 0.5); /* Sombra amarilla */
+    text-align: center; /* Centrar contenido */
+}
+

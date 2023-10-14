@@ -7,32 +7,31 @@
     <asp:Label ID="LBL" runat="server" Text=""></asp:Label>
     <h1><%: nombre %></h1>
 
+
     <body>
         <div class="container text-center">
             <div class="row">
                 <div class="col">
-                    <asp:Repeater ID="repeaterImages" runat="server" DataSource="<%# imagenesArticulo %>">
-                        <ItemTemplate>
-                            <div class="carousel-item<%# Container.ItemIndex == 0 ? " active" : "" %>">
-                                <img src='<%# Eval("Descripcion") %>' class="d-block w-100" alt="...">
-                            </div>
-                        </ItemTemplate>
-                    </asp:Repeater>
+                   <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <% for (int i = 0; i < imagenesArticulo.Count; i++)
+        { %>
+            <div class="carousel-item<%= i == 0 ? " active" : "" %>">
+                <img src="<%= imagenesArticulo[i] %>" alt="<%= imagenesArticulo[i] %>" />
+            </div>
+        <% } %>
+    </div>
 
-                    <div id="carouselExample" class="carousel slide">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
+    <!-- Controles del carousel -->
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Anterior</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Siguiente</span>
+    </a>
+</div>
                 </div>
                 <div class="col1">
                     <div class="card" style="width: 18rem;">

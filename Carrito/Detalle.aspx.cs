@@ -15,15 +15,16 @@ namespace Carrito
         public string nombre { get; set; }
         public string imgUrl { get; set; }
         public string descripcion { get; set; }
-        public List<Imagen> imagenesArticulo { get; set; }
+        public List<string> imagenesArticulo { get; set; }
        
         protected void Page_Load(object sender, EventArgs e)
         {
             
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
             articulos = articuloNegocio.ListarConSP();
+            
             Articulo seleccionado = new Articulo();
-
+            
 
             if (!IsPostBack)
             {
@@ -37,8 +38,16 @@ namespace Carrito
                     {
                         if (obj.IdArticulo.ToString() == idArticulo)
                         {
+                            
                             seleccionado = obj;
+
                         }
+
+                    }
+
+                    for (int x=0; x < seleccionado.imagenesUrl.Count; x++)
+                    {
+                        imagenesArticulo[x] = seleccionado.imagenesUrl[x].Descripcion;
 
                     }
 
@@ -47,10 +56,9 @@ namespace Carrito
                     //imgUrl = seleccionado.ImagenUrl.Descripcion;
                     descripcion = seleccionado.Descripcion;
                     ///aca tengo mis imagenes (se supone) 
-                    imagenesArticulo = seleccionado.imagenesUrl;
+                    //imagenesArticulo = seleccionado.imagenesUrl;
 
-                    repeaterImages.DataSource = articulos.SelectMany(articulo => seleccionado.imagenesUrl);
-                    repeaterImages.DataBind();
+                    
 
                 }
                 else

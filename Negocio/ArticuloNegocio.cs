@@ -251,13 +251,14 @@ namespace Negocio
                 datos.CerrarConexion();
             }
         }
+    
         public List<Articulo> ListarConSP()
         {
             List<Articulo> articulos = new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.SetearProcedimiento("ListadoArticulos");
+                datos.SetearProcedimiento("ListarConSP");
                 datos.EjecutarLectura();
 
                 while (datos.lector.Read())
@@ -302,6 +303,7 @@ namespace Negocio
                 datos.CerrarConexion();
             }
         }
+
     }
 }
 

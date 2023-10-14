@@ -1,5 +1,5 @@
 ﻿.card {
-    margin-top: 50px; /* Ajusta el valor según la cantidad de espacio que desees */
+    margin-top: 50px; 
     margin-left: 100px;
     margin-bottom: 20px;
 }
@@ -9,4 +9,37 @@
         height: 200px;
   }
 
+.custom-navbar {
+    background-color: #FFE600;
+    color: #000000;
+}
 
+.form-control {
+    background-color: #FFEEA0;
+    color: #333333;
+    border: 2px solid #FFD700;
+    border-radius: 5px;
+    padding: 5px; 
+    width: 200px; 
+}
+
+.form-control input[type="search"]::placeholder {
+    color: #666666; 
+}
+
+.btn {
+    background-color: #00A86B;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    margin-left: 5px;
+}
+
+.btn:hover{
+    background-color:black;
+}
+
+.cart-item {
+    margin-left: auto;
+}

@@ -254,22 +254,11 @@ namespace Negocio
         public List<Articulo> ListarConSP()
         {
             List<Articulo> articulos = new List<Articulo>();
-            
-            //Imagen obj = new Imagen();
             AccesoDatos datos = new AccesoDatos();
-            AccesoDatos datos1 = new AccesoDatos();
-
-
             try
             {
-               
-                
-
                 datos.SetearProcedimiento("ListadoArticulos");
                 datos.EjecutarLectura();
-                datos1.SetearProcedimiento("storedListarImagenes");
-                datos1.EjecutarLectura();
-
 
                 while (datos.lector.Read())
                 {
@@ -284,21 +273,7 @@ namespace Negocio
                     aux.Marca.Descripcion = (string)datos.lector["MarcaDescripcion"];
                     aux.Marca.IdMarca = (int)datos.lector["IdMarca"];
                     aux.Categoria = new Categoria();
-                    //aux.ImagenUrl = new Imagen();
-                    //aux.imagenesUrl = imagenes;
-                    List<Imagen> imagenes = new List<Imagen>();
-                    while (datos1.lector.Read())
-                    {
-                                 Imagen obj = new Imagen();
-                        if (datos1.lector["IdArticulo"].ToString() == aux.IdArticulo.ToString())
-
-                            obj.IdArticulo = (int)datos1.lector["IdArticulo"];
-
-                        obj.Descripcion = (string)datos1.lector["ImagenUrl"];
-
-                        imagenes.Add(obj);
-                    }
-                    aux.imagenesUrl = imagenes;
+                    aux.ImagenUrl = new Imagen();
 
                     if (datos.lector["CategoriaDescripcion"] is DBNull)
                     {
@@ -311,13 +286,8 @@ namespace Negocio
                         aux.Categoria.IdCategoria = (int)datos.lector["IdCategoria"];
                     }
 
-                    //if (!(datos.lector["ImagenUrl"] is DBNull))
-                    // aux.ImagenUrl.Descripcion = (string)datos.lector["ImagenUrl"];
-                    ///aca esta para guardar mas imagenes 
-                    ///ejecuta la lectura trayendo todas las imagenes de la tabla pero con el if solo guardo las que son
-                    ///del articulo que corresponde. (hay que ver si anda )
-                    
-                   
+                    if (!(datos.lector["ImagenUrl"] is DBNull))
+                        aux.ImagenUrl.Descripcion = (string)datos.lector["ImagenUrl"];
 
                     articulos.Add(aux);
                 }

@@ -18,13 +18,17 @@ namespace Carrito
         public string imgUrl { get; set; }
         public string descripcion { get; set; }
         public List<string> imagenesArticulo { get; set; }
-       
+        
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
             articulos = articuloNegocio.ListarConSP();
-            
+            imagenesArticulo = new List<string>();
+
+
             Articulo seleccionado = new Articulo();
             
 
@@ -57,11 +61,27 @@ namespace Carrito
                     ///aca tengo mis imagenes (se supone) 
                     //imagenesArticulo = seleccionado.imagenesUrl;
 
-                int id = int.Parse(idArticulo);
+
+                    int id = int.Parse(idArticulo);
                 DataTable imagenes = obtenerImagenesPorId(id);
                     
-
+                foreach (DataRow row in imagenes.Rows)
+                {
+                        string url = row["ImagenUrl"].ToString();
+                        imagenesArticulo.Add(url);
                 }
+                    repeaterImagenes.DataSource = imagenesArticulo;
+                    repeaterImagenes.DataBind();
+
+
+                    
+                }
+
+                
+
+
+
+
                 else
                 {
                     // Maneja el caso en el que el parámetro "IdArticulo" no está presente en la URL.

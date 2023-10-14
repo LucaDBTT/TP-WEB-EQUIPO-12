@@ -33,6 +33,15 @@ namespace Negocio
             Comando.Parameters.AddWithValue(nombre, valor);
         }
 
+
+
+
+        
+            
+         
+         
+         
+
         public void SetearQuery(string Query)
         {
             Comando.CommandType = System.Data.CommandType.Text;

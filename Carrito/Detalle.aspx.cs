@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Dominio;
 using Negocio;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace Carrito
 {
@@ -44,20 +46,19 @@ namespace Carrito
                         }
 
                     }
+                    
 
-                    for (int x=0; x < seleccionado.imagenesUrl.Count; x++)
-                    {
-                        imagenesArticulo[x] = seleccionado.imagenesUrl[x].Descripcion;
 
-                    }
 
-                   
+
                     nombre = seleccionado.Nombre;
                     //imgUrl = seleccionado.ImagenUrl.Descripcion;
                     descripcion = seleccionado.Descripcion;
                     ///aca tengo mis imagenes (se supone) 
                     //imagenesArticulo = seleccionado.imagenesUrl;
 
+                int id = int.Parse(idArticulo);
+                DataTable imagenes = obtenerImagenesPorId(id);
                     
 
                 }
@@ -66,11 +67,38 @@ namespace Carrito
                     // Maneja el caso en el que el parámetro "IdArticulo" no está presente en la URL.
                     LBL.Text = "ID del Artículo no especificado"; // Puedes mostrar un mensaje de error.
                 }
+
             }
 
             
 
 
+        }
+
+        private DataTable obtenerImagenesPorId(int id)
+        {
+            // Conexión a la base de datos
+            string cadenaConexion = "server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true";
+            using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+            {
+                using (SqlCommand comando = new SqlCommand("ObtenerDatosPorId", conexion))
+                {
+                    // Especificar que el comando es un procedimiento almacenado
+                    comando.CommandType = CommandType.StoredProcedure;
+
+                    // Agregar parámetro
+                    comando.Parameters.AddWithValue("@Id", id);
+
+                    // Abrir conexión y ejecutar el comando
+                    conexion.Open();
+                    using (SqlDataAdapter adaptador = new SqlDataAdapter(comando))
+                    {
+                        DataTable resultados = new DataTable();
+                        adaptador.Fill(resultados);
+                        return resultados;
+                    }
+                }
+            }
         }
     }
 }

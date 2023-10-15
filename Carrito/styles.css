@@ -1,7 +1,8 @@
 ﻿.card {
-    margin-top: 50px; 
+    margin-top: 50px;
     margin-left: 100px;
     margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(255, 255, 0, 0.5);
 }
 
 .card img {
@@ -65,12 +66,51 @@
 
 
 section {
-    background-color: #ffffff; /* Color de fondo */
-    padding: 20px; /* Espaciado interior */
-    margin-top: 20px; /* Espaciado superior */
-    border: 1px solid #ddd; /* Borde */
-    border-radius: 5px; /* Bordes redondeados */
-    box-shadow: 0 0 40px rgba(255, 255, 0, 0.5); /* Sombra amarilla */
-    text-align: center; /* Centrar contenido */
+    background-color: #f8f9fa;
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 10px; 
+    box-shadow: 0 0 20px rgba(255, 255, 0, 0.5); 
+    text-align: center;
 }
 
+
+.card-container {
+    max-width: 18rem;
+    margin: 10px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.card-title {
+    font-size: 1.25rem;
+}
+
+.card-text {
+    font-size: 1rem;
+}
+
+.custom-brand {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px; /* Tamaño de fuente más grande */
+    font-weight: bold; /* Texto en negrita */
+    color: #008000; /* Color verde esmeralda */
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+body {
+    padding-bottom: 200px;
+}

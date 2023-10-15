@@ -19,7 +19,7 @@
 
         <nav class="navbar navbar-expand-lg custom-navbar" data-bs-theme="primary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Articulos</a>
+                <a class="navbar-brand custom-brand" href="/Default.aspx">Promises</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -41,9 +41,7 @@
                         <asp:Button ID="btnSearch" runat="server" Text="Buscar" OnClick="SearchButton_Click" CssClass="btn btn-outline-success my-2 my-sm-0" />
                         <div class="tooltip" id="searchTooltip">Por favor, ingrese un término de búsqueda.</div>
                     </form>
-
-
-                    
+    
                     <script>
                         // Script para filtro
                         function searchButtonClick() {
@@ -63,11 +61,23 @@
             </div>
         </nav>
 
-
         <div class="container">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
     </form>
+
+    <footer style="background-color: #FFE600; color: black;" class="text-center py-2">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h4>Promises</h4>
+                <p>Somos su fuente confiable para los mejores productos de electrodomésticos. Ofrecemos una amplia gama de productos de alta calidad a precios competitivos. ¡Encuentre los electrodomésticos perfectos para su hogar hoy mismo!</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
 </body>
+
 </html>

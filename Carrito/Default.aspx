@@ -2,9 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+  
     <div id="carouselExampleIndicators" class="carousel slide">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -34,17 +33,18 @@
 
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
-        <asp:Repeater ID="repRepeater" runat="server">
-            <ItemTemplate>
-                <div class="card" style="width: 18rem;">
-                    <img src="<%#Eval("ImagenUrl") %>" class="card-img-top" alt="..." onerror="this.src='https://camarasal.com/wp-content/uploads/2020/08/default-image-5-1.jpg'">
-                    <div class="card-body">
-                        <h5 class="card-title"><%#Eval("Nombre") %></h5>
-                        <p class="card-text"><%#Eval("Descripcion") %></p>
-                        <a href='<%# "Detalle.aspx?IdArticulo=" + Eval("IdArticulo") %>' class="btn btn-primary">Ver Detalle</a>
-                    </div>
+    <asp:Repeater ID="repRepeater" runat="server">
+        <ItemTemplate>
+            <div class="card-container card mb-3">
+                <img src="<%#Eval("ImagenUrl") %>" class="card-image card-img-top" alt="..." onerror="this.src='https://camarasal.com/wp-content/uploads/2020/08/default-image-5-1.jpg'">
+                <div class="card-body">
+                    <h5 class="card-title"><%#Eval("Nombre") %></h5>
+                    <p class="card-text"><%#Eval("Descripcion") %></p>
+                    <a href='<%# "Detalle.aspx?IdArticulo=" + Eval("IdArticulo") %>' class="btn btn-primary">Ver Detalle</a>
                 </div>
-            </ItemTemplate>
-        </asp:Repeater>
-    </div>
+            </div>
+        </ItemTemplate>
+    </asp:Repeater>
+</div>
+
 </asp:Content>

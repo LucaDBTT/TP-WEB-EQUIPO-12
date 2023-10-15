@@ -17,6 +17,11 @@ namespace Carrito
             Articulo seleccionado = new Articulo();
             if (!IsPostBack)
             {
+                if (Request.QueryString["EliminarArticulo"] != null)
+                {
+                    int idArticuloEliminar = Convert.ToInt32(Request.QueryString["EliminarArticulo"]);
+                    EliminarArticuloDelCarrito(idArticuloEliminar);
+                }
                 if (Request.QueryString["IdArticulo"] != null)
                 {
                     string idArticulo = Request.QueryString["IdArticulo"];
@@ -57,6 +62,23 @@ namespace Carrito
             }
         }
 
+        private void EliminarArticuloDelCarrito(int idArticuloEliminar)
+        {
+            // Obtén el carrito
+            ItemCarrito carrito = ObtenerCarrito();
+
+            // Utiliza LINQ para encontrar el artículo a eliminar por su ID
+            Articulo articuloAEliminar = carrito.ArticulosEnCarrito.FirstOrDefault(a => a.IdArticulo == idArticuloEliminar);
+
+            if (articuloAEliminar != null)
+            {
+                // Si se encontró el artículo, elimínalo del carrito
+                carrito.ArticulosEnCarrito.Remove(articuloAEliminar);
+
+                // Actualiza la lista de carrito en la sesión
+                Session["Carrito"] = carrito;
+            }
+        }
         protected ItemCarrito ObtenerCarrito()
         {
             if (Session["Carrito"] == null)

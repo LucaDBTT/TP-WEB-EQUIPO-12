@@ -13,7 +13,17 @@ namespace Carrito
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                // Obtener el carrito de compras
+                ItemCarrito carrito = ObtenerCarrito();
 
+                // Calcular la cantidad de artículos en el carrito
+                int cantidadArticulos = carrito.ArticulosEnCarrito.Count;
+
+                // Establecer el valor del Label
+                lblCartItemCount.Text = cantidadArticulos.ToString();
+            }
         }
 
         protected void SearchButton_Click(object sender, EventArgs e)
@@ -32,6 +42,15 @@ namespace Carrito
             {
                 
             }
+        }
+        protected ItemCarrito ObtenerCarrito()
+        {
+            if (Session["Carrito"] == null)
+            {
+                Session["Carrito"] = new ItemCarrito();
+            }
+
+            return (ItemCarrito)Session["Carrito"];
         }
     }
 }

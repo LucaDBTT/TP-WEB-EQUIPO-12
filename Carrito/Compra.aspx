@@ -17,6 +17,7 @@
                                         <h5 class="card-title"><%# Eval("Nombre") %></h5>
                                         <p class="card-text"><%# Eval("Descripcion") %></p>
                                         <h5 class="card-title">$<%# Eval("Precio") %></h5>
+                                       <a href='<%# "Compra.aspx?EliminarArticulo=" + Eval("IdArticulo") %>' class="btn btn-primary" >Eliminar</a>
                                     </div>
                                 </div>
                             </div>

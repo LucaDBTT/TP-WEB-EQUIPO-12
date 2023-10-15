@@ -40,6 +40,19 @@
     background-color:black;
 }
 
+.btnSearch {
+    background-color: #00A86B;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    margin-left: 5px;
+}
+
+.btnSearch:hover {
+  background-color: black;
+   }
+
 .cart-item {
     margin-left: auto;
 }

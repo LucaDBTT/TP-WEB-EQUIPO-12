@@ -68,6 +68,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Detalle.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="ResultadosBusqueda.aspx" />
     <Content Include="styles.css" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -97,6 +98,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultadosBusqueda.aspx.cs">
+      <DependentUpon>ResultadosBusqueda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResultadosBusqueda.aspx.designer.cs">
+      <DependentUpon>ResultadosBusqueda.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebMaster.Master.cs">
       <DependentUpon>WebMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

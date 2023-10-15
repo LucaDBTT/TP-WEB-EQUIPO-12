@@ -27,5 +27,6 @@ namespace Carrito
                 string idArticulo = Request.QueryString["IdArticulo"];
             }
         }
+
     }
 }

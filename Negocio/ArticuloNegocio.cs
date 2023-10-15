@@ -158,17 +158,20 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                string consulta = "select Codigo, Nombre, A.Descripcion, M.Descripcion as MarcaDescripcion, C.Descripcion as CategoriaDescripcion,Precio,I.ImagenUrl, A.IdCategoria, A.IdMarca, \r\nA.Id from ARTICULOS as A, CATEGORIAS as C, MARCAS as M, IMAGENES as I  \r\nwhere C.Id = A.IdCategoria and M.Id = A.IdMarca and I.IdArticulo = A.Id and ";
+                string consulta = "SELECT A.Codigo, A.Nombre, A.Descripcion, M.Descripcion AS MarcaDescripcion, C.Descripcion AS CategoriaDescripcion, A.Precio, MAX(I.ImagenUrl) AS ImagenUrl, A.IdCategoria, A.IdMarca, A.Id " +
+                 "FROM ARTICULOS AS A " +
+                 "INNER JOIN CATEGORIAS AS C ON A.IdCategoria = C.Id " +
+                 "INNER JOIN MARCAS AS M ON A.IdMarca = M.Id " +
+                 "INNER JOIN IMAGENES AS I ON I.IdArticulo = A.Id " +
+                 "WHERE C.Id = A.IdCategoria AND M.Id = A.IdMarca AND I.IdArticulo = A.Id ";
+
                 switch (campo)
                 {
-
                     case "Marca":
                         switch (criterio)
                         {
                             case "Contiene las letras: ":
-
-                                consulta += "M.Descripcion like '%" + filtroAvanzado + "%'";
-
+                                consulta += "AND M.Descripcion LIKE '%" + filtroAvanzado + "%'";
                                 break;
                         }
                         break;
@@ -176,19 +179,19 @@ namespace Negocio
                         switch (criterio)
                         {
                             case "Contiene las letras: ":
-                                consulta += "C.Descripcion like '%" + filtroAvanzado + "%'";
-                                break;
-                        }
-                        break;
-                    case "Nombre":
-                        switch (criterio)
-                        {
-                            case "Contiene las letras: ":
-                                consulta += "A.Nombre like '%" + filtroAvanzado + "%'";
+                                consulta += "AND C.Descripcion LIKE '%" + filtroAvanzado + "%'";
                                 break;
                         }
                         break;
 
+                    case "Nombre":
+                        switch (criterio)
+                        {
+                            case "Contiene las letras: ":
+                                consulta += "AND A.Nombre LIKE '%" + filtroAvanzado + "%'";
+                                break;
+                        }
+                        break;
                 }
 
                 if (campo == "Precio")
@@ -196,15 +199,15 @@ namespace Negocio
                     switch (criterio)
                     {
                         case "Precio mayor a: ":
-                            consulta += "Precio > " + filtroAvanzado;
+                            consulta += "AND A.Precio > " + filtroAvanzado;
                             break;
-
                         case "Precio menor a: ":
-                            consulta += "Precio < " + filtroAvanzado;
+                            consulta += "AND A.Precio < " + filtroAvanzado;
                             break;
                     }
-
                 }
+
+                consulta += " GROUP BY A.Codigo, A.Nombre, A.Descripcion, M.Descripcion, C.Descripcion, A.Precio, A.IdCategoria, A.IdMarca, A.Id";
 
                 datos.SetearQuery(consulta);
                 datos.EjecutarLectura();
@@ -251,7 +254,8 @@ namespace Negocio
                 datos.CerrarConexion();
             }
         }
-    
+
+
         public List<Articulo> ListarConSP()
         {
             List<Articulo> articulos = new List<Articulo>();

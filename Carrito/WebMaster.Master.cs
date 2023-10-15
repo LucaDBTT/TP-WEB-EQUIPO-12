@@ -24,7 +24,14 @@ namespace Carrito
             // Realiza aquí la lógica de búsqueda, como la consulta a la base de datos.
 
             // Luego, redirige a la página de resultados de búsqueda, pasando el término de búsqueda como parámetro de consulta.
-            Response.Redirect("ResultadosBusqueda.aspx?search=" + Server.UrlEncode(searchTerm));
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                Response.Redirect("ResultadosBusqueda.aspx?search=" + Server.UrlEncode(searchTerm));
+            }
+            else
+            {
+                
+            }
         }
     }
 }

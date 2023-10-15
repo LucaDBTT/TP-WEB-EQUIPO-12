@@ -39,8 +39,25 @@
                     <form class="form-inline my-2 my-lg-0">
                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="txtSearch" runat="server">
                         <asp:Button ID="btnSearch" runat="server" Text="Buscar" OnClick="SearchButton_Click" CssClass="btn btn-outline-success my-2 my-sm-0" />
+                        <div class="tooltip" id="searchTooltip">Por favor, ingrese un término de búsqueda.</div>
                     </form>
 
+
+                    
+                    <script>
+                        // Script para filtro
+                        function searchButtonClick() {
+                            var searchTerm = document.getElementById('txtSearch').value;
+                            if (searchTerm.trim() === '') {
+                                var tooltip = document.getElementById('searchTooltip');
+                                tooltip.style.visibility = 'visible';
+                                setTimeout(function () {
+                                    tooltip.style.visibility = 'hidden';
+                                }, 3000);
+                            } else {
+                            }
+                        }
+                    </script>
 
                 </div>
             </div>

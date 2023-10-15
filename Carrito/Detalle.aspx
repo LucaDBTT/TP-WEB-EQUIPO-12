@@ -36,7 +36,7 @@
                                 <h5 class="card-title"><%:marca %> <%:nombre %></h5>
                                 <p class="card-text"><%:descripcion %></p>
                                 <h5 class="car-title">$<%:precio %></h5>
-                                <a href="Compra.aspx" class="btn btn-primary">Añadir al Carrito</a>
+                             <a href='<%= "Compra.aspx?IdArticulo=" + Request.QueryString["IdArticulo"] %>' class="btn btn-primary">Agregar al Carrito</a>
                             </div>
                         </div>
                     </div>

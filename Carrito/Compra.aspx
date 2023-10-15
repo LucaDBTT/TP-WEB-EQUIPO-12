@@ -3,12 +3,17 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <header>Carrito de Compras</header>
-     <asp:GridView ID="dgvCarrito" runat ="server" AutoGenerateColumns="False" cssclass="table table-dark table-striped-columns">
-                <Columns>
-                    <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />
-                    <asp:BoundField DataField="IdArticulo" HeaderText="ID" />
-                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
-                    <asp:BoundField DataField="Precio" HeaderText="Precio" DataFormatString="{0:C}" />
-                </Columns>
-            </asp:GridView>
+     <asp:Label ID="LBL" runat="server" Text=""></asp:Label>
+     <asp:Repeater ID="repeaterResultados" runat="server">
+        <ItemTemplate>
+            <div class="card" style="width: 18rem">
+                <div class="card-body">
+                    <h5 class="card-title"><%# Eval("Nombre") %></h5>
+                    <p class="card-text"><%# Eval("Descripcion") %></p>
+                    <h5 class="card-title">$<%# Eval("Precio") %></h5>
+                     
+                </div>
+            </div>
+        </ItemTemplate>
+    </asp:Repeater>
 </asp:Content>

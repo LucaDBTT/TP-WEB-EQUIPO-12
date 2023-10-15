@@ -98,6 +98,7 @@
     <Content Include="Compra.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Detalle.aspx" />
+    <Content Include="FinalizarCompra.aspx" />
     <Content Include="Global.asax" />
     <Content Include="ResultadosBusqueda.aspx" />
     <Content Include="styles.css" />
@@ -124,6 +125,13 @@
     </Compile>
     <Compile Include="Detalle.aspx.designer.cs">
       <DependentUpon>Detalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FinalizarCompra.aspx.cs">
+      <DependentUpon>FinalizarCompra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FinalizarCompra.aspx.designer.cs">
+      <DependentUpon>FinalizarCompra.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
